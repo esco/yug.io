@@ -1,0 +1,4 @@
+public/js/*.js
+public/js/lib
+public/js/modules
+public/js/routers
