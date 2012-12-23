@@ -1,4 +1,3 @@
-
 yug.io 
 ======
 
@@ -10,8 +9,8 @@ Libraries
 ---
 Link these libraries to your project directory but don't add them to the repo
 
-express
-jade
+* express
+* jade
 
 To link them, first install globally on your machine, and then link them.
 
@@ -24,8 +23,8 @@ Install globally:
 
 Then link: 
 
+run this in your project directory:
 <code>
-	#run this in your project directory
 	npm link express
 </code>
 
