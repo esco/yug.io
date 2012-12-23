@@ -23,7 +23,7 @@ Install globally:
 
 Then link: 
 
-run this in your project directory
+run this in your project directory:
 <code>
 	npm link express
 </code>
