@@ -8,4 +8,4 @@ Make a case-sensitive partition for these files
 
 Coffeescript
 --
-coffee --watch --compile --output public/js coffee/public/js
+coffee --watch --compile --output public/javascripts coffee/public/javascripts
