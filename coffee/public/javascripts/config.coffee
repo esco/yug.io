@@ -1,11 +1,10 @@
 require.config
-  baseUrl: '/js/'
+  baseUrl: '/javascripts/'
 
   paths:
     underscore: 'vendor/underscore'
     backbone: 'vendor/backbone'
     marionette: 'vendor/backbone/backbone.marionette'
-    marionette_kl: 'vendor/backbone/backbone.marionette.kl'
     
     css: 'vendor/require/css/main'
     text: 'vendor/require/text'
@@ -40,13 +39,9 @@ require.config
         deps: ['backbone']
         exports: 'Marionette'
 
-      override:
-        deps: ['marionette']
-        exports: 'override'
-
       App:
         deps: ['marionette']
-        exports: 'App'
+        exports: 'app'
 
     config:
         text:
@@ -59,15 +54,12 @@ require.config
 
 
 require [
+    'app'
     'underscore'
     'backbone'
     'marionette'
-    'App'
-    'modal'
-    'override'
     'validation'
     'binding'
-    'marionette_kl'
 ],
-(_, Backbone, Marionette, App) ->
+(App) ->
   App = new App()
