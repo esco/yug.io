@@ -5,3 +5,4 @@ public/javascripts/modules
 public/javascripts/routers
 nbproject
 /nbproject/private/
+.DS_Store
