@@ -5,6 +5,7 @@ require.config
     underscore: 'vendor/underscore'
     backbone: 'vendor/backbone'
     marionette: 'vendor/backbone/backbone.marionette'
+    deepModel: 'vendor/backbone/deep-model'
     
     css: 'vendor/require/css/main'
     text: 'vendor/require/text'
@@ -35,6 +36,10 @@ require.config
         deps: ['backbone']
         exports: 'validation'
 
+      deepModel:
+        deps: ['backbone']
+        exports: 'deepModel'
+
       marionette:
         deps: ['backbone']
         exports: 'Marionette'
@@ -60,6 +65,7 @@ require [
     'marionette'
     'validation'
     'binding'
+    'deepModel'
 ],
 (App) ->
   App = new App()
