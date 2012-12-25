@@ -1,8 +1,14 @@
+(function (exports) {
 
-/*
- * GET users listing.
- */
+  "use strict";
 
-exports.list = function(req, res){
-  res.send("respond with a resource");
-};
+  var Card = require('../models/card.js');
+
+  exports.list = function (req, res) {
+    new Card({title: 'test-title', description: 'test-desc'}).save();
+    Card.find(function(err, cards) {
+        res.send(cards);
+    });
+  };
+  
+}(exports));

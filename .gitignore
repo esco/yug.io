@@ -3,3 +3,5 @@ public/javascripts/*.js
 public/javascripts/lib
 public/javascripts/modules
 public/javascripts/routers
+nbproject
+/nbproject/private/

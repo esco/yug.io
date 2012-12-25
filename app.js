@@ -4,8 +4,8 @@
  */
 
 var express = require('express')
+  , mongoose = require('mongoose')
   , routes = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
 
@@ -27,8 +27,8 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+routes.init(app);
+mongoose.connect("127.0.0.1", "yugio_dev", 27017);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

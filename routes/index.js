@@ -1,8 +1,16 @@
+(function (exports) {
 
-/*
- * GET home page.
- */
+  "use strict";
 
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
-};
+  var common = require('./common')
+  , user = require('./user');
+
+  exports.init = function (app) {
+
+    app.get('/', common.index);
+    
+    app.get('/users', user.list);
+
+  };
+
+}(exports));
