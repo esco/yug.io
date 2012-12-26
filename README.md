@@ -15,6 +15,9 @@ Link these libraries to your project directory but don't add them to the repo
 
 * express
 * jade
+* node-config
+* mongoose
+* underscore
 
 To link them, first install globally on your machine, and then link them.
 
