@@ -1,8 +1,4 @@
 node_modules
-public/javascripts/*.js
-public/javascripts/lib
-public/javascripts/modules
-public/javascripts/routers
 nbproject
 /nbproject/private/
-.DS_Store
+*.DS_Store
