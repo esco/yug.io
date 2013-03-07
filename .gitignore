@@ -1,5 +1,6 @@
 node_modules
 nbproject
 /nbproject/private/
+public/card_imgs
 *.js
 *.DS_Store

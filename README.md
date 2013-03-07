@@ -41,3 +41,7 @@ Coffeescript
 <code>
 	sh bin/coffee
 </code>
+
+Card Images
+--
+For local testing, download the [images](http://yug.io/card_imgs.tar.gz) (38.3MB) extract the "card_imgs" folder into the public folder
