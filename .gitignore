@@ -1,4 +1,5 @@
 node_modules
 nbproject
 /nbproject/private/
+*.js
 *.DS_Store

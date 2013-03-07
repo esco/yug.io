@@ -2,15 +2,18 @@
 (function() {
   "use strict";
 
-  var common, user;
+  var card, cards, common;
 
   common = require("./common");
 
-  user = require("./user");
+  cards = require("./cards");
+
+  card = require("./card");
 
   exports.init = function(app) {
     app.get("/", common.index);
-    return app.get("/users", user.list);
+    app.get("/card/id/:id", card.get);
+    return app.get("/cards", cards.list);
   };
 
 }).call(this);

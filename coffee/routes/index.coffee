@@ -1,8 +1,10 @@
 "use strict"
 
 common = require "./common"
-user = require "./user"
+cards = require "./cards"
+card = require "./card"
 
 exports.init = (app) ->
 	app.get "/", common.index
-	app.get "/users", user.list
+	app.get "/card/id/:id", card.get
+	app.get "/cards", cards.list

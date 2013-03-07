@@ -13,6 +13,7 @@ module.exports =
 
 	#Development:
 
-	#Menzoic:
+	Menzoic:
+		dbName: 'yugioh'
 
 	#Faizan:
