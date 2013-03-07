@@ -1,7 +1,8 @@
 require.config
-  baseUrl: '/javascripts/'
+  baseUrl: '/javascripts/app/'
 
   paths:
+    vendor: '../vendor'
     underscore: 'vendor/underscore'
     backbone: 'vendor/backbone'
     marionette: 'vendor/backbone/backbone.marionette'
@@ -14,10 +15,10 @@ require.config
     binding: 'vendor/backbone/Backbone.ModelBinder'
 
     modules: 'modules'
-    collections: 'lib/collections'
-    models: 'lib/models'
-    widgets: 'lib/widgets'
-    views: 'lib/views'
+    collections: 'library/collections'
+    models: 'library/models'
+    widgets: 'library/widgets'
+    views: 'library/views'
     templates: '/templates/'
 
     shim:

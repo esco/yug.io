@@ -1,8 +1,7 @@
 define [
 	'collections/Card'
 ],
-(CardCollection) ->
+(Cards) ->
 	class Deck extends Backbone.Model
-
 		urlRoot: '/deck'
 		
