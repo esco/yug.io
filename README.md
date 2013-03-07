@@ -31,8 +31,10 @@ To install these dependencies, run
 Scripts
 --
 make the bin scripts executable
-chmod +x bin/*
 
+<code>
+chmod +x bin/*
+</code>
 
 Coffeescript
 --
