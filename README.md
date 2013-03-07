@@ -11,7 +11,7 @@ ex: <code>NODE_DEVELOPER=Menzoic node app.js</code>
 
 Libraries
 ---
-Link these libraries to your project directory but don't add them to the repo
+The following libraries are dependencies listed in package.json
 
 * express
 * jade
@@ -19,23 +19,12 @@ Link these libraries to your project directory but don't add them to the repo
 * mongoose
 * underscore
 
-To link them, first install globally on your machine, and then link them.
+To install these dependencies, run
 
-Ex:
-
-Install globally:
 <code>
-	npm install -g express
+	npm install -d
 </code>
 
-Then link: 
-
-run this in your project directory:
-<code>
-	npm link express
-</code>
-
-npm will link the library into the node_modules folder.
 
 Coffeescript
 --
