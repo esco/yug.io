@@ -7,7 +7,10 @@ Make a case-sensitive partition for these files
 
 Set up a NODE_DEVELOPER variable in your path or define it when you start the app
 
-ex: <code>NODE_DEVELOPER=Menzoic node app.js</code>
+ex: <code>NODE_DEVELOPER=Menzoic nodemon app.js</code>
+
+Alternatively you can define NODE_DEVELOPER in your path and use the 'start' shell script in the bin/ folder. 
+
 
 Libraries
 ---
@@ -29,5 +32,5 @@ To install these dependencies, run
 Coffeescript
 --
 <code>
-	coffee --watch --compile --output . coffee
+	
 </code>

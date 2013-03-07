@@ -1,0 +1,1 @@
+NODE_DEVELOPER=$NODE_DEVELOPER nodemon app.js
