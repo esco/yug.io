@@ -8,4 +8,4 @@ exports.init = (app) ->
 	app.get "/", common.index
 	app.get "/card/id/:id", card.get
 	app.get "/cards", cards.list
-	app.get "/cards/start/:start/end/:end", cards.list
+	app.get "/cards/start/:start/limit/:limit", cards.list
