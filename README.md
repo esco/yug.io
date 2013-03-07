@@ -28,9 +28,14 @@ To install these dependencies, run
 	npm install -d
 </code>
 
+Scripts
+--
+make the bin scripts executable
+chmod +x bin/*
+
 
 Coffeescript
 --
 <code>
-	
+	sh bin/coffee
 </code>
