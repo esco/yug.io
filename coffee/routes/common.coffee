@@ -2,4 +2,4 @@
 
 exports.index = (req, res) ->
 	res.render "index",
-	  title: "Express"
+	  title: "Yug.io"

@@ -1,8 +1,7 @@
 require.config
-  baseUrl: '/javascripts/app/'
+  baseUrl: '/javascripts/'
 
   paths:
-    vendor: '../vendor'
     underscore: 'vendor/underscore'
     backbone: 'vendor/backbone'
     marionette: 'vendor/backbone/backbone.marionette'
@@ -15,10 +14,12 @@ require.config
     binding: 'vendor/backbone/Backbone.ModelBinder'
 
     modules: 'modules'
-    collections: 'library/collections'
-    models: 'library/models'
-    widgets: 'library/widgets'
-    views: 'library/views'
+    collections: 'app/library/collections'
+    models: 'app/library/models'
+    widgets: 'app/library/widgets'
+    views: 'app/library/views'
+    app: 'app/app'
+
     templates: '/templates/'
 
     shim:
@@ -69,4 +70,5 @@ require [
     'deepModel'
 ],
 (App) ->
+  console.log 'starting app'
   App = new App()

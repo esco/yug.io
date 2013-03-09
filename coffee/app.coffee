@@ -10,7 +10,7 @@ path = require "path"
 default_config = require('config').Default
 production_config = require('config').Production
 config = _.defaults production_config, default_config
-
+console.log process.env.NODE_ENV
 if process.env.NODE_ENV = 'development'
   development_config = require('config').Development or {}
   developer_config = require('config')[process.env.NODE_DEVELOPER] or {}
@@ -35,7 +35,8 @@ app.configure "development", ->
 
 routes.init app
 
-mongoose.connect config.dbHost, config.dbName, config.dbPort
+#mongoose.connect config.dbHost, config.dbName, config.dbPort
+mongoose.connect config.dbUri, config.dbOptions or {}
 
 http.createServer(app).listen app.get("port"), ->
   console.log "Express server listening on port " + app.get("port")
