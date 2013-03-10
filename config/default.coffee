@@ -1,7 +1,7 @@
 module.exports =
 	
 	Default:
-		port: 10013
+		port: 3000
 		dbUri: 'mongodb://linus.mongohq.com:10013/yugio'
 		dbOptions:
 			user:'yugio'
