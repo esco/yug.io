@@ -1,5 +1,6 @@
 yug.io 
 ======
+Duel online on your desktop, mobile phone, or tablet
 
 Workspace
 ---
