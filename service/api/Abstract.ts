@@ -1,30 +1,37 @@
-interface IAbstractServiceApi {
-	public post () {};
-	public get () {};
-}
+var _ = require('underscore');
 
-export class AbstractServiceApi implements IAbstractServiceApi {
+export class AbstractServiceApi {
 
-	constructor (params, reqOrFn, res) {
-		this.params = params;
-
-		if (typeof(reqOrFn) == 'function') {
-			this.fn = reqOrFn;
-		} else {
-			this.req = req;
+	constructor () {
+		var ignoreFns  = ['constructor', 'initializeEndpoint', 'respond'];
+		for(var prop in this) {
+			if(typeof(this[prop]) == 'function' && !_.contains(ignoreFns, prop)) {
+				this.initializeEndpoint(prop);
+			}
 		}
-
-		this.res = res;
 	}
 
-	public post () {}
+	public initializeEndpoint (fnName) {
+		this[fnName] = _.wrap(this[fnName], function(func, params, reqOrFn, res){
+			var fn = null;
+			var req = null;
 
-	public get () {}
+			if (typeof(reqOrFn) == 'function') {
+				console.log('func?')
+				fn = reqOrFn;
+			} else {
+				console.log('respond');
+				fn = _.partial(this.respond, res);
+				req = reqOrFn;
+			}
 
-	public respond (data) =>
-		if (this.fn) {
-			this.fn(data);
-		} else if (this.res) {
-			res.send(data || 400);
-		}
+			console.log('got ', params);
+			func(params, fn, req, res);
+
+		});
+	}
+
+	public respond (res, data) {
+		res.send(data);
+	}
 }
