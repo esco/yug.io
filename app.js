@@ -12,8 +12,6 @@ var default_config = require('config').Default;
 var production_config = require('config').Production;
 var config = _.defaults(production_config, default_config);
 
-console.log(process.env.NODE_ENV);
-
 if (process.env.NODE_ENV = 'development') {
   development_config = require('config').Development || {};
   developer_config = require('config')[process.env.NODE_DEVELOPER] || {};
@@ -41,7 +39,11 @@ app.configure("development", function() {
 
 routes.init(app);
 
-mongoose.connect(config.dbUri, config.dbOptions || {});
+if(process.env.NODE_ENV == 'development') {
+  mongoose.connect(config.dbHost, config.dbName, config.dbPort);
+} else {
+  mongoose.connect(config.dbUri, config.dbOptions || {});
+}
 
 http.createServer(app).listen(app.get("port"), function() {
   return console.log("Express server listening on port " + app.get("port"));

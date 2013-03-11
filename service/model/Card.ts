@@ -3,15 +3,14 @@ var Card = require('../../model/Card');
 export class CardServiceModel {
 
 	public get (id, fn) {
-		Card.findOne(
-			{
-				'attributes.card_number': id
-			},
-			function (err, card) {
-				if(err) { throw err; }
-				fn(card); 
-			}
-		);
+		var query = {
+			'attributes.card_number': id
+		};
+
+		Card.findOne(query, function (err, card) {
+			if(err) { throw err; }
+			fn(card); 
+		});
 	}
 
 	public search(query, start, limit, fn) {
@@ -19,7 +18,9 @@ export class CardServiceModel {
 			skip: parseInt(start) || 0,
 			limit: parseInt(limit) || 50
 		};
+		
 		query = query? JSON.parse(query) : {};
+
 		Card.find(query, 'attributes', options, function(err, cards){
 			if(err) {throw err};
 			fn(cards);
