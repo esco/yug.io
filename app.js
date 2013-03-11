@@ -45,6 +45,6 @@ if(process.env.NODE_ENV == 'development') {
   mongoose.connect(config.dbUri, config.dbOptions || {});
 }
 
-http.createServer(app).listen(app.get("port"), function() {
+http.createServer(app).listen(app.get("port"), config.host, null,  function() {
   return console.log("Express server listening on port " + app.get("port"));
 });
