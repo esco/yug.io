@@ -2,19 +2,12 @@
 (function() {
   "use strict";
 
-  var builder, card, cards, common;
-
-  //common = require("./common");
-  //cards = require("./cards");
-  ///card = require("./card");
-  builder = require("./builder");
-
-  var Api =  require("../api").Api;
-  var api = new Api();
+  var Api =  require("../api");
+  var builder = require("./builder");
 
   exports.init = function(app) {
     app.all('/api/*', function(req, res){
-      api.init(req, res);
+      Api.init(req, res);
     });
 
     app.get("/builder", builder.index);
