@@ -2,6 +2,7 @@ node_modules
 nbproject
 /nbproject/private/
 public/card_imgs
+logs
 *.js
 *.DS_Store
 .c9revisions/

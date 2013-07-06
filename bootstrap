@@ -1,0 +1,74 @@
+#!/bin/sh -ex
+
+export APP_PORT=3000
+export APP_PATH="${PWD}"
+export APP_PID_DIR="/var/run/yugio"
+export APP_PID_FILE="master.pid"
+export APP_PID="${APP_PID_DIR}/${APP_PID_FILE}"
+export APP_VIEWS_PATH="${APP_PATH}/views"
+export APP_PUBLIC_PATH="${APP_PATH}/public"
+export APP_LOG_DIR="/var/yugio/logs"
+export APP_LOG_FILE="${APP_LOG_DIR}/yugio.log"
+
+if [ "${NODE_ENV}" == "" ]; then
+	export NODE_ENV="production"
+else
+	export NODE_ENV=${NODE_ENV}
+fi
+
+echo NODE_ENV ${NODE_ENV}
+
+if [ ! -d "${APP_LOG_DIR}" ]; then
+	mkdir -p ${APP_LOG_DIR}
+fi
+
+if [ ! -d "${APP_PID_DIR}" ]; then
+	mkdir -p ${APP_PID_DIR}
+fi
+
+APP_SERVER="${APP_PATH}/yugio.js"
+
+function start {
+	echo "Starting server..."
+	nodemon -e js,css,html ${APP_SERVER}
+}
+
+function stop {
+	if [ -f "${APP_PID}" ]; then
+		echo "Killing master process.."
+
+		if [ ! $(kill $(cat ${APP_PID})) ]; then
+			echo "Unable to kill process"
+		fi
+
+		rm -f "${PID_PATH}/master.pid"
+	else
+		echo "Pid file was not located... attempting to kill the node process via pidof..."
+		if [ $(kill $(pidof node)) ]; then
+			echo "Killed node process"
+		else
+			echo "Could not kill pidof node... checking for the pidfile..."
+		fi
+	fi
+}
+
+function help {
+	echo "usage: ./bootstrap {start|stop|restart}"
+}
+
+case $1 in
+	start )		start
+				;;
+
+	stop )		stop
+				;;
+
+	restart )	stop
+				start
+				;;
+
+	port) 		PORT=$1
+				;;
+
+	* )	help	;;
+esac
