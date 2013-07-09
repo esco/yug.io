@@ -41,7 +41,7 @@ function stop {
 			echo "Unable to kill process"
 		fi
 
-		rm -f "${PID_PATH}/master.pid"
+		rm -f "${APP_PID}"
 	else
 		echo "Pid file was not located... attempting to kill the node process via pidof..."
 		if [ $(kill $(pidof node)) ]; then

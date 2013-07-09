@@ -1,5 +1,3 @@
 exports.index = function(req, res) {
-	return res.render("index", {
-		title: "Yug.io"
-	});
+	res.render("index", {title: "Yug.io"});
 };

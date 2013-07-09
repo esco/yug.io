@@ -3,6 +3,8 @@ var env = process.env;
 var fs = require('fs');
 var cluster = require('cluster');
 var numCPUs = require('os').cpus().length;
+var cons = require('consolidate')
+var swig = require('swig')
 var express = require("express");
 var logger = require('./lib/logger.js');
 var mongoose = require("mongoose");
@@ -25,9 +27,17 @@ app = express();
 
 //configure app
 app.configure(function() {
-  app.set("port", config.port);
-  app.set("views", __dirname + "/views");
-  app.set("view engine", "jade");
+  app.set("port", env.APP_PORT);
+
+  //setup swig
+  app.engine('.html', cons.swig);
+  app.set('view engine', 'html');
+  swig.init({
+    root: env.APP_VIEWS_PATH,
+    allowErrors: true
+  });
+  app.set('views', env.APP_VIEWS_PATH);
+
   app.use(express.favicon());
   app.use(express.logger("dev"));
   app.use(express.bodyParser());

@@ -16,16 +16,16 @@ CardServiceModel.prototype = {
 		});
 	},
 
-	search: function(_query, start, limit, fn) {
-		var query = {attributes:{}};
+	search: function(sQuery, start, limit, fn) {
+		var query = {};
 		var options = {
 			skip: parseInt(start) || 0,
 			limit: parseInt(limit) || 50
 		};
-		_query = _query? JSON.parse(_query) : {};
+		sQuery = sQuery? sQuery : {};
 
-		if (_query.name) {
-			query.attributes.name = new RegExp(_query.name, 'i');
+		if (sQuery.name) {
+			query['attributes.name'] = new RegExp(sQuery.name, 'i');
 		}
 
 		Card.find(query, 'attributes', options, function(err, cards){

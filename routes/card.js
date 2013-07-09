@@ -1,12 +1,9 @@
 var CardServiceApi = require('../service/api/Card');
 
-export get (req, res) {
-	var api = new CardServiceApi();
-	api.get(req.params.id, function(card){
-		if(card) {
-			res.send(card);
-		} else {
-			res.send(400);
-		}
+exports.index = function (req, res) {
+	var cardServiceApi = new CardServiceApi();
+	cardServiceApi.get({id: req.params.id}, function(card){
+		console.log(card)
+		res.render('card', {card: card || {}})
 	});
 }

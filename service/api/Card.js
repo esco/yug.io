@@ -21,7 +21,7 @@ _.extend(CardServiceApi.prototype, {
 	},
 
 	search: function(params, fn) {
-		serviceModel.search(params.query, params.start, params.limit, fn);
+		serviceModel.search(params.squery, params.start, params.limit, fn);
 	},
 
 	list: function(params, fn) {

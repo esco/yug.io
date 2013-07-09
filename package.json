@@ -6,13 +6,20 @@
     "start": "nodemon app"
   },
   "dependencies": {
-    "express": "3.0.5",
-    "jade": "*",
-    "config": "0.4.21",
-    "nodemon": "*",
-    "mongoose": "3.5.7",
-    "underscore": "1.4.4",
-    "underscore.string": "2.3.1",
-    "typescript-require": "0.2.2"
+    "express": "~3.0.5",
+    "config": "~0.4.21",
+    "nodemon": "~0.7.8",
+    "mongoose": "~3.5.7",
+    "underscore": "~1.4.4",
+    "underscore.string": "~2.3.1",
+    "typescript-require": "~0.2.2",
+    "consolidate": "~0.9.1",
+    "swig":"~0.14.0",
+    "stylus": "~0.33.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-stylus": "~0.5.1",
+    "grunt-contrib-watch": "~0.4.4"
   }
 }

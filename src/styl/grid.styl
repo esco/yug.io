@@ -1,0 +1,7 @@
+column(num)
+	width: num * column-width
+	float: left
+
+subcolumn(parentNum, num)
+	width: ((100/(parentNum * column-width)) * column-width) * num
+	float: left
