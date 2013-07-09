@@ -11,7 +11,7 @@ export APP_LOG_DIR="/var/yugio/logs"
 export APP_LOG_FILE="${APP_LOG_DIR}/yugio.log"
 
 if [ "${NODE_ENV}" == "" ]; then
-	export NODE_ENV="production"
+	export NODE_ENV="development"
 else
 	export NODE_ENV=${NODE_ENV}
 fi

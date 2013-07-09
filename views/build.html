@@ -2,7 +2,6 @@
 
 {% block content %}
 	<script type="text/javascript">
-		var scrollers;
 		function onImageLoadError() {
 			this.onError=null;
 			this.setAttribute('src', this.getAttribute('data-default'));
@@ -15,7 +14,7 @@
 		<div id="card-list">
 			<ul>
 				{% for card in cards %}
-					<li id="card-{{loop.index}}" class='card'>
+					<li class='card'>
 						<img data-default='/card_imgs/150x213.gif' src="/card_imgs/150/{{card.attributes.card_number}}.jpg" onError="onImageLoadError.call(this)"/>
 					</li>
 				{% endfor %}
@@ -33,27 +32,12 @@
 	{% parent %}
 	<script type="text/javascript">
 		$(function(){
-			var cardScroller;
-			cardScroller = new iScroll('card-list', {vScrollbar:true});
-			$('#card-list img').on('load', function(){
-				cardScroller.refresh();
-				/*var $card = $(this).parent();
-				var position = $card .position();
-				var width = $card .width();
-				var height = $card .height();
-				var left = position.left - (width/4);
-				var right = position.left + (width/4);
-				var top = position.top;
+			var cardScroller = new iScroll('card-list');
 
-				console.log(position, width,  [left,top,right,height]);
-				$(this).find('img').draggable({
-					axis: 'x',
-					revert: true,
-					containment:  [left,top,right,height]
-				});*/
-				var $card = $(this).parent();
-				scrollers.push(new iScroll({vScroll:false}));
-			})
+			$('#card-list img').each(function(){
+				cardScroller.refresh();
+				makeDraggable($(this).parent());
+			});
 
 			$('#card-list img').on('click', function(){
 				$('#selected-card').attr('src', $(this).attr('src'));
@@ -64,36 +48,21 @@
 				$(this).addClass('active-card');
 			});
 
-			$('#card-list .card').one('click', function(){
-				var position = $(this).position();
-				var width = $(this).width();
-				var height = $(this).height();
+			function makeDraggable($card) {
+				var position = $card.position();
+				var width = $card.width();
+				var height = $card.height();
 				var left = position.left - (width/4);
 				var right = position.left + (width/4);
 				var top = position.top;
 
 				console.log(position, width,  [left,top,right,height]);
-				$(this).find('img').draggable({
+				$card.find('img').draggable({
 					axis: 'x',
 					revert: true,
 					containment:  [left,top,right,height]
 				});
-			})
-			/*
-
-			$.fn.ripcord = function(options){
-				this.each(function(){
-
-				})
 			}
-
-			$('#card-list img').ripcord({
-				left: 'half',
-				right: 'half'
-			}).on('left right', function(){
-				console.log($(this));
-			});*/
-
 		});
 	</script>
 {% endblock %}
