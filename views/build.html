@@ -10,7 +10,9 @@
 
 	<div class="container builder">
 		<h1>{{title}}</h1>
-
+		<!--div id="search-bar">
+			<input id="search" type='text' />
+		</div-->
 		<div id="card-list">
 			<ul>
 				{% for card in cards %}
@@ -34,9 +36,13 @@
 		$(function(){
 			var cardScroller = new iScroll('card-list');
 
+			$(window).on('resize', function(){
+				cardScroller.refresh();
+			});
+
 			$('#card-list img').each(function(){
 				cardScroller.refresh();
-				makeDraggable($(this).parent());
+				makeDraggable($(this));
 			});
 
 			$('#card-list img').on('click', function(){
@@ -49,19 +55,42 @@
 			});
 
 			function makeDraggable($card) {
-				var position = $card.position();
 				var width = $card.width();
-				var height = $card.height();
-				var left = position.left - (width/4);
-				var right = position.left + (width/4);
-				var top = position.top;
+				var left =  -(width/4);
+				var right = (width * 1.25) - width;
+				var top = 0;
+				var bottom = $card.height();
+				var currentX;
+				var startX;
+				var dX = 0;
+				var startOffsetX;
 
-				console.log(position, width,  [left,top,right,height]);
-				$card.find('img').draggable({
-					axis: 'x',
-					revert: true,
-					containment:  [left,top,right,height]
+				$card.css('-webkit-transition', ' -webkit-transform 0s linear');
+				$card.on('mousedown', function(e){
+					startX = e.clientX;
+					startOffsetX = e.offsetX;
+					//console.log(startX, startOffsetX);
+					$(document).on('mousemove', trackMovement);
+				}).on('mouseup mouseleave', function(){
+					$(document).off('mousemove', trackMovement);
+					$card.css({
+						'-webkit-transition': ' -webkit-transform 0.1s linear',
+						'-webkit-transform': 'translateX(0px)'
+					});
 				});
+
+				function trackMovement(e) {
+					currentX = e.clientX;
+					dX = currentX - startX; //console.log('dX: ', dX);
+
+					if (dX > right) {
+						dX = right;
+					} else if ( dX < left) {
+						dX = left;
+					}
+
+					$card.css('-webkit-transform', 'translateX('+dX+'px)');
+				}
 			}
 		});
 	</script>

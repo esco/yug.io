@@ -8,7 +8,7 @@ exports.init = function(app) {
     Api.init(req, res);
   });
 
-  app.get("/builder", builder.index);
+  app.get("/build", builder.index);
   app.get("/card/:id", card.index);
 
 };

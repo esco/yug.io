@@ -6,9 +6,9 @@ module.exports = function(grunt) {
 		stylus: {
 			compile: {
 				files: {
-					'public/stylesheets/reset.css': 'src/styl/reset.styl',
-					'public/stylesheets/style.css': 'src/styl/style.styl',
-					'public/stylesheets/builder.css': 'src/styl/builder.styl'
+					'public/css/reset.css': 'src/styl/reset.styl',
+					'public/css/style.css': 'src/styl/style.styl',
+					'public/css/builder.css': 'src/styl/builder.styl'
 				}
 			}
 		},
