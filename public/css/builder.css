@@ -1,0 +1,9 @@
+.container.builder{width:100%}
+#search-bar{width:100%;float:left;height:40px}
+#card-list{width:75%;float:left;height:100%;}
+#card-list ul{width:100%;list-style:none;}
+#card-list ul li.card{width:16.666666666666664%;float:left;position:relative;}
+#card-list ul li.card.active-card{z-index:99}
+#card-list ul li.card img{width:100%;position:relative;left:0}
+#card-info{width:25%;float:left;}
+#card-info img{width:100%}
