@@ -4,3 +4,5 @@ nbproject
 public/card_imgs
 *.DS_Store
 .c9revisions/
+pid
+logs

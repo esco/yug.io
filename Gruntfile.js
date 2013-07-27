@@ -8,7 +8,8 @@ module.exports = function(grunt) {
 				files: {
 					'public/css/reset.css': 'src/styl/reset.styl',
 					'public/css/style.css': 'src/styl/style.styl',
-					'public/css/builder.css': 'src/styl/builder.styl'
+					'public/css/builder.css': 'src/styl/builder.styl',
+					'public/css/mixins.css': 'src/styl/mixins.styl'
 				}
 			}
 		},

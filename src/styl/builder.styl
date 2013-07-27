@@ -1,4 +1,5 @@
 @import './grid.styl'
+@import './mixins.styl'
 
 //////////
 // GRID //
@@ -9,6 +10,8 @@ column-width = 12.5%
 ////////////
 // LAYOUT //
 ////////////
+*
+	-webkit-transform:translate3d(0,0,0);
 
 .container.builder
 		width: 100%
@@ -19,14 +22,38 @@ column-width = 12.5%
 
 	#card-list
 		column(6)
+		-webkit-backface-visibility: hidden;
+		-webkit-transform-style: preserve-3d;
 		height: 100%
 		ul
 			width: 100%
 			list-style: none
+			-webkit-backface-visibility: hidden;
+			-webkit-transform-style: preserve-3d;
 			li
 				&.card
 					subcolumn(6, 1)
 					position: relative;
+					.counter
+						width: 1px
+						height: 1px
+						padding: 10%
+						position: absolute
+						top: 0
+						right: 0
+						background: #ff0000
+						border-radius(60%)
+						z-index: 100
+						display: none
+						&.active
+							display:block
+						p
+							text-align: center
+							color: #ffffff
+							position: absolute;
+							top: 25%;
+							left: 36%;
+							font-weight: bold
 					&.active-card
 							z-index:99
 					img

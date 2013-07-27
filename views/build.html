@@ -17,6 +17,7 @@
 			<ul>
 				{% for card in cards %}
 					<li class='card'>
+						<div class="counter"><p></p></div>
 						<img data-default='/card_imgs/150x213.gif' src="/card_imgs/150/{{card.attributes.card_number}}.jpg" onError="onImageLoadError.call(this)"/>
 					</li>
 				{% endfor %}
@@ -33,7 +34,7 @@
 {% block js %}
 	{% parent %}
 	<script type="text/javascript">
-		$(function(){
+		(function($){
 			var cardScroller = new iScroll('card-list');
 
 			$(window).on('resize', function(){
@@ -60,18 +61,22 @@
 				var right = (width * 1.25) - width;
 				var top = 0;
 				var bottom = $card.height();
+				var dX = 0;
 				var currentX;
 				var startX;
-				var dX = 0;
 				var startOffsetX;
+				var recordAction = false;
+				var $counter = $card.parent().find('.counter p');
+				var count = 0;
 
 				$card.css('-webkit-transition', ' -webkit-transform 0s linear');
 				$card.on('mousedown', function(e){
+					recordAction = true;
 					startX = e.clientX;
 					startOffsetX = e.offsetX;
-					//console.log(startX, startOffsetX);
 					$(document).on('mousemove', trackMovement);
 				}).on('mouseup mouseleave', function(){
+					recordAction = true;
 					$(document).off('mousemove', trackMovement);
 					$card.css({
 						'-webkit-transition': ' -webkit-transform 0.1s linear',
@@ -85,13 +90,27 @@
 
 					if (dX > right) {
 						dX = right;
+						if (recordAction && count < 3) {
+							console.log('click right', count, $counter, $card);
+							$counter.html(++count);
+							$counter.parent().addClass('active');
+							recordAction = false;
+						}
 					} else if ( dX < left) {
 						dX = left;
+						if (recordAction && count > 0) {
+							console.log('click left');
+							$counter.html(--count);
+							if (count === 0) {
+								$counter.parent().removeClass('active');
+							}
+							recordAction = false;
+						}
 					}
 
 					$card.css('-webkit-transform', 'translateX('+dX+'px)');
 				}
 			}
-		});
+		})(jQuery);
 	</script>
 {% endblock %}

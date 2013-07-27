@@ -1,8 +1,12 @@
+*{-webkit-transform:translate3d(0,0,0)}
 .container.builder{width:100%}
 #search-bar{width:100%;float:left;height:40px}
-#card-list{width:75%;float:left;height:100%;}
-#card-list ul{width:100%;list-style:none;}
+#card-list{width:75%;float:left;-webkit-backface-visibility:hidden;-webkit-transform-style:preserve-3d;height:100%;}
+#card-list ul{width:100%;list-style:none;-webkit-backface-visibility:hidden;-webkit-transform-style:preserve-3d;}
 #card-list ul li.card{width:16.666666666666664%;float:left;position:relative;}
+#card-list ul li.card .counter{width:1px;height:1px;padding:10%;position:absolute;top:0;right:0;background:#f00;-webkit-border-radius:60%;-moz-border-radius:60%;border-radius:60%;z-index:100;display:none;}
+#card-list ul li.card .counter.active{display:block}
+#card-list ul li.card .counter p{text-align:center;color:#fff;position:absolute;top:25%;left:36%;font-weight:bold}
 #card-list ul li.card.active-card{z-index:99}
 #card-list ul li.card img{width:100%;position:relative;left:0}
 #card-info{width:25%;float:left;}
